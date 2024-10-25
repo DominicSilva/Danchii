@@ -1,5 +1,6 @@
 ﻿using Danchi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Danchi.Context
 {
