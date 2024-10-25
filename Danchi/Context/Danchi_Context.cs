@@ -41,8 +41,59 @@ namespace Danchi.Context
             modelBuilder.Entity<AnuncioAcontecimientos>().Property(u => u.LugarAcontecimiento).HasColumnName("LugarAcontecimiento");
             modelBuilder.Entity<AnuncioAcontecimientos>().Property(u => u.FechaYHora).HasColumnName("FechaYHora");
 
+            modelBuilder.Entity<AutenticacionUsuario>().ToTable("AutenticacionUsuario");
+            modelBuilder.Entity<AutenticacionUsuario>().HasKey(u => u.TipoUsuario);
+            modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.TipoUsuario).HasColumnName("TipoUsuario").ValueGeneratedOnAdd();
+            modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.Usuario).HasColumnName("Usuario");
+            modelBuilder.Entity<AutenticacionUsuario>().Property(u => u.Contraseña).HasColumnName("Contraseña");
 
+            modelBuilder.Entity<ChatInterno>().ToTable("ChatInterno");
+            modelBuilder.Entity<ChatInterno>().HasKey(u => u.IdChat);
+            modelBuilder.Entity<ChatInterno>().Property(u => u.IdChat).HasColumnName("IdChat").ValueGeneratedOnAdd();
+            modelBuilder.Entity<ChatInterno>().Property(u => u.IdAdministrador).HasColumnName("IdAdministrador");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.IdResidente).HasColumnName("IdResidente");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.Mensaje).HasColumnName("Mensaje");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.Fecha).HasColumnName("Fecha");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.Hora).HasColumnName("Hora");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.EstadoDelMensaje).HasColumnName("EstadoDelMensaje");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.Asunto).HasColumnName("Asunto");
+            modelBuilder.Entity<ChatInterno>().Property(u => u.Adjuntos).HasColumnName("Adjuntos");
 
+            modelBuilder.Entity<NotificacionEmergencias>().ToTable("NotificacionEmergencias");
+            modelBuilder.Entity<NotificacionEmergencias>().HasKey(u => u.IdEmergencia);
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.IdEmergencia).HasColumnName("IdEmergencia").ValueGeneratedOnAdd();
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.Descripcion).HasColumnName("Descripcion");
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.AccionesRecomendadas).HasColumnName("AccionesRecomendadas");
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.EstadoEmergencia).HasColumnName("EstadoEmergencia");
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.TipoEmergencia).HasColumnName("TipoEmergencia");
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.Lugar).HasColumnName("Lugar");
+            modelBuilder.Entity<NotificacionEmergencias>().Property(u => u.FechaYHora).HasColumnName("FechaYHora");
+
+            modelBuilder.Entity<Residente>().ToTable("Residente");
+            modelBuilder.Entity<Residente>().HasKey(u => u.IdResidente);
+            modelBuilder.Entity<Residente>().Property(u => u.IdResidente).HasColumnName("IdResidente").ValueGeneratedOnAdd();
+            modelBuilder.Entity<Residente>().Property(u => u.NumApartamento).HasColumnName("NumApartamento");
+            modelBuilder.Entity<Residente>().Property(u => u.CorreoElectronico).HasColumnName("CorreoElectronico");
+            modelBuilder.Entity<Residente>().Property(u => u.CelularResidente).HasColumnName("CelularResidente");
+            modelBuilder.Entity<Residente>().Property(u => u.Nombre).HasColumnName("Nombre");
+
+            modelBuilder.Entity<SoporteTecnico>().ToTable("SoporteTecnico");
+            modelBuilder.Entity<SoporteTecnico>().HasKey(u => u.IdSoporte);
+            modelBuilder.Entity<SoporteTecnico>().Property(u => u.IdSoporte).HasColumnName("IdSoporte").ValueGeneratedOnAdd();
+            modelBuilder.Entity<SoporteTecnico>().Property(u => u.IdResidente).HasColumnName("IdResidente");
+            modelBuilder.Entity<SoporteTecnico>().Property(u => u.IdAdministrador).HasColumnName("IdAdministrador");
+            modelBuilder.Entity<SoporteTecnico>().Property(u => u.ActividadAfectada).HasColumnName("ActividadAfectada");
+            modelBuilder.Entity<SoporteTecnico>().Property(u => u.Descripcion).HasColumnName("Descripcion");
+            modelBuilder.Entity<SoporteTecnico>().Property(u => u.Prioridad).HasColumnName("Prioridad");
+
+            modelBuilder.Entity<SugerenciasReporteErrores>().ToTable("SugerenciasReporteErrores");
+            modelBuilder.Entity<SugerenciasReporteErrores>().HasKey(u => u.IdSugerenciaError);
+            modelBuilder.Entity<SugerenciasReporteErrores>().Property(u => u.IdSugerenciaError).HasColumnName("IdSugerenciaError").ValueGeneratedOnAdd();
+            modelBuilder.Entity<SugerenciasReporteErrores>().Property(u => u.IdResidente).HasColumnName("IdResidente");
+            modelBuilder.Entity<SugerenciasReporteErrores>().Property(u => u.TipoDeReporte).HasColumnName("TipoDeReporte");
+            modelBuilder.Entity<SugerenciasReporteErrores>().Property(u => u.Descripcion).HasColumnName("Descripcion");
+            modelBuilder.Entity<SugerenciasReporteErrores>().Property(u => u.Lugar).HasColumnName("Lugar");
+            modelBuilder.Entity<SugerenciasReporteErrores>().Property(u => u.FechaYHora).HasColumnName("FechaYHora");
 
         }
 
